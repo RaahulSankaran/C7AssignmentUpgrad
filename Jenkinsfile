@@ -24,8 +24,8 @@ pipeline {
     stage('Pushing to ECR') {
      steps{  
          script {
-                sh 'docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 679136127575.dkr.ecr.us-east-1.amazonaws.com/nodeapp'
-                sh 'docker push 679136127575.dkr.ecr.us-east-1.amazonaws.com/nodeapp'
+                sh 'sudo docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 679136127575.dkr.ecr.us-east-1.amazonaws.com/nodeapp'
+                sh 'sudo docker push 679136127575.dkr.ecr.us-east-1.amazonaws.com/nodeapp'
          }
         }
       }
@@ -35,6 +35,7 @@ pipeline {
     stage('Docker Run') {
      steps{
          script {
+                sh 'sudo su'
                 sh 'ssh -i raahul-key.pem ubuntu@10.0.2.9'
                 sh 'docker run -d -p 8080:8080 --rm --name node 679136127575.dkr.ecr.us-east-1.amazonaws.com/nodeapp'
             }
