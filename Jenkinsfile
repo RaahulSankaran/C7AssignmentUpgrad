@@ -15,8 +15,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-               sh 'git clone https://github.com/RaahulSankaran/C7AssignmentUpgrad.git'
-              sh 'docker build github.com/RaahulSankaran/C7AssignmentUpgrad.git#node:alpine'
+              sh 'docker build github.com/RaahulSankaran/C7AssignmentUpgrad.git'
         }
       }
     }
