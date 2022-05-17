@@ -15,7 +15,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-              dockerImage = docker.build registry
+              docker build -t 679136127575.dkr.ecr.us-east-1.amazonaws.com/nodeapp .
         }
       }
     }
